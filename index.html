@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><style>
+        form{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2></h2>
+     <form>
+    <input type="text" placeholder="enter_the_city">
+    <input type="submit" >
+
+    </form>
+    <script>
+
+       var a=document.getElementsByTagName("h2")
+       a[0].innerText="Findout The Weather Of City";
+       a[0].style.textAlign="center";
+      var b=document.forms;
+    //   console.log(b[0]);
+       var xx=document.createElement("h1")
+       document.body.appendChild(xx)
+    
+
+       b[0].addEventListener("submit",function(e){
+          e.preventDefault();
+        //  console.log(e);
+          
+         
+
+
+
+        var x="https://api.openweathermap.org/data/2.5/weather?q="
+        var y=e.target[0].value;
+        var z="&appid=01b5789dad21296593251d5e37536e93"
+        
+            var dup=x+y+z;
+         
+            fetch(dup,{
+         method:"get"
+        }).then((val)=>{
+        return val.json()
+        }).then((val)=>{
+            var temp=parseInt((val.main.temp)-273.15);
+         console.log(temp)
+        //  document.write(val.main.temp)
+       
+         if(temp>25){
+            xx.style.backgroundImage="url('./sun.webp')";
+            xx.style.backgroundPosition="center"
+            xx.style.backgroundRepeat="no-repeat";
+            xx.style.height="600px"
+            xx.style.textAlign="center";
+            xx.style.color="red"
+            
+         }
+       
+      
+
+        
+       else if(temp<30){
+            xx.style.backgroundImage="url('./winter1.jpeg')";
+            xx.style.backgroundPosition="center"
+            xx.style.backgroundRepeat="no-repeat";
+            xx.style.height="600px"
+            xx.style.color="blue"
+            xx.style.textAlign="center";
+            
+            
+         }
+        xx.innerHTML=temp+"<sup>0</sup>C";
+
+        })
+
+        })
+    
+
+       
+       
+       
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+</html>
